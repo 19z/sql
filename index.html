@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZUI，一个简单灵活的前端框架。">
+    <meta name="author" content="Zentao">
+    <meta name="renderer" content="webkit">
+    <title>HELLO SQL</title>
+
+    <link href="./dist/css/zui.min.css" rel="stylesheet">
+    <link href="./dist/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+    <link href="./dist/lib/chosen/chosen.min.css" rel="stylesheet">
+    <link href="./dist/lib/calendar/calendar.min.css" rel="stylesheet">
+    <link href="./dist/lib/calendar/zui.calendar.min.css" rel="stylesheet">
+    <link href="./dist/lib/chosen/chosen.icons.min.css" rel="stylesheet">
+    <link href="./dist/doc.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="./assets/html5shiv.js"></script>
+    <script src="./assets/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+
+</header>
+<div id="main">
+    <h1>音响店VCD销售、出售管理系统
+        <small>计信系网络工程专业-葛瑞</small>
+    </h1>
+    <div class="center-block"><em>HELLO SQL</em></div>
+
+    <ul id="myTab" class="nav nav-pills">
+        <li class="active">
+            <a href="#总览" data-toggle="tab">总览</a>
+        </li>
+        <li>
+            <a href="#全部VCD" data-toggle="tab">全部VCD</a>
+        </li>
+        <li>
+            <a href="#VCD类型管理" data-toggle="tab">VCD类型管理</a>
+        </li>
+        <li>
+            <a href="#VCD入库管理" data-toggle="tab">VCD入库管理</a>
+        </li>
+        <li>
+            <a href="#VCD借还管理" data-toggle="tab">VCD借还管理</a>
+        </li>
+        <li>
+            <a href="#VCD零售管理" data-toggle="tab">VCD零售管理</a>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                高级管理<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                <li>
+                    <a href="#关于" tabindex="-1" data-toggle="tab">关于</a>
+                </li>
+                <li>
+                    <a href="./SQL.htm" tabindex="-1" target="_blank">数据库调试</a>
+                </li>
+                <li>
+                    <a href="javascript:;" tabindex="-1"  data-toggle="modal" data-target="#youyan">交流</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr/>
+    <div class="tab-content">
+    <!---细节---->
+    <!---总览-->
+    <div class="tab-pane in active" id="总览">
+        <h3>快捷操作</h3>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default quityRuKu" data-toggle="modal" data-target="#VCDRuKu"><i
+                    class="icon-download-alt"></i>VCD入库
+            </button>
+            <button type="button" class="btn btn-primary" onclick="$('#myTab a[href=\'#VCD借还管理\']').tab('show')"><i
+                    class="icon-exchange"></i>VCD租还
+            </button>
+            <button type="button" class="btn btn-success" onclick="$('#myTab a[href=\'#VCD零售管理\']').tab('show')"><i
+                    class="icon-dollar"></i>VCD出售
+            </button>
+        </div>
+        <hr/>
+        <h2>总览</h2>
+        <table class="table table-striped datatable">
+            <thead>
+            <tr>
+                <th>类型</th>
+                <th>子类型</th>
+                <th>DVD种类</th>
+                <th>店内库存</th>
+                <th>出借在外</th>
+                <th>已出售</th>
+                <th>总共出借</th>
+            </tr>
+            </thead>
+            <tbody class="zonglanshuju">
+            </tbody>
+        </table>
+        <hr/>
+
+
+    </div>
+
+
+    <!---全部VCD-->
+    <div class="tab-pane" id="全部VCD">
+
+        <div class="comments">
+            <header>
+                <div class="">
+                    <div class="form-group col-md-4 pull-right">
+                        <div class="input-group">
+                            <input type="text" class="form-control AllSousuo" placeholder="全文搜索">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#VCDRuKu"><i
+                                        class="icon-download-alt"></i>VCD入库
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <h3><i class="icon-bullseye icon-border-circle"></i>全部DVD</h3>
+            </header>
+            <section class="comments-list allDVD">
+
+            </section>
+            <footer>
+
+            </footer>
+        </div>
+
+    </div>
+
+    <!--VCD类型管理--->
+    <div class="tab-pane" id="VCD类型管理">
+        <h2>VCD类型管理</h2>
+        <table class="table table-bordered table-hover">
+            <tbody>
+            <tr class="唱片类型">
+                <td rowspan="1">唱片</td>
+                <td>默认</td>
+                <td>不可删除</td>
+            </tr>
+
+            <tr class="电影类型">
+                <td rowspan="1">电影</td>
+                <td>默认</td>
+                <td>不可删除</td>
+            </tr>
+
+
+            <tr class="电视类型">
+                <td rowspan="1">电视</td>
+                <td>默认</td>
+                <td>不可删除</td>
+            </tr>
+
+            <tr class="游戏类型">
+                <td rowspan="1">游戏</td>
+                <td>默认</td>
+                <td>不可删除</td>
+            </tr>
+
+            <tr class="其他类型">
+                <td rowspan="1">其他</td>
+                <td>默认</td>
+                <td>不可删除</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!---VCD入库管理-->
+    <div class="tab-pane" id="VCD入库管理">
+        <h3>VCD入库</h3>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success quityRuKu" data-toggle="modal" data-target="#VCDRuKu"><i
+                    class="icon-download-alt"></i>快速入库
+            </button>
+            <button type="button" class="btn btn-success newRuKu" data-toggle="modal" data-target="#VCDRuKu"><i
+                    class="icon-download-alt"></i>VCD新入库
+            </button>
+            <button type="button" class="btn btn-success addRuKu" data-toggle="modal" data-target="#VCDRuKu"><i
+                    class="icon-download-alt"></i>VCD追加库存
+            </button>
+        </div>
+        <hr />
+        <table  class="table table-bordered table-hover">
+            <tbody class="rukulishi">
+            <tr class="">
+                <td>入库时间</td>
+                <td>入库VCD的条形码</td>
+                <td>入库数量</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!---VCD借还管理-->
+    <div class="tab-pane" id="VCD借还管理">
+        <h2><i class="icon-upload"></i>VCD借出</h2>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">名称/条形码</label>
+                <div>
+                    <div class="col-md-10">
+                        <input value="" class="form-control  vcdsousuo" placeholder="直接输入VCD识别码或者VCD名">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <hr />
+        <table class="table table-bordered sousuoming">
+        </table>
+
+        <h2><i class="icon-download"></i>VCD归还</h2>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">出借码或者借阅者的ID</label>
+
+                <div class="">
+                    <div class="col-md-10">
+                        <input value="" class="form-control input-id-jie"
+                               placeholder="通过出借时生成并贴于VCD上的标识码或者借阅者ID来搜索。"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="jie">
+
+        </div>
+    </div>
+
+    <!----VCD零售管理--->
+    <div class="tab-pane" id="VCD零售管理">
+        <h2>VCD零售管理</h2>
+        <p>建议直接在“全部VCD”列表中搜索，并在结果中点击“出售”按钮。</p>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label required">名称/条形码</label>
+
+                <div>
+                    <div class="col-md-10">
+                        <input value="" class="form-control input-id-shou" placeholder="如果有条形码请一律输入条形码">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label required">数量</label>
+
+                <div>
+                    <div class="col-md-3">
+                        <input value="" class="form-control input-id-num" placeholder="数量">
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button type="button" class="btn btn-success chushouOK">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+    <!----关于--->
+    <div class="tab-pane" id="关于">
+        <h2>关于</h2>
+
+
+    </div>
+
+
+    <!--细节结束-->
+    </div>
+
+
+</div>
+
+<!--VCD入库modal Start--->
+<div class="modal fade" id="VCDRuKu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">VCD入库</h4>
+            </div>
+            <div class="modal-body">
+                <!--VCD入库Start--->
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label required">VCD的ID/唯一名/条形码</label>
+
+                        <div class="col-md-7">
+                            <div class="col-md-12">
+                                <input type='text' name='isbn' id='isbn' value='' class='form-control input_isbn'
+                                       placeholder='将被当做主键'/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+
+                    <div class="tab-content">
+                        <div class="example" name="新增" id="newRuKu">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label required">类型</label>
+
+                                <div class="col-md-3">
+                                    <select class="form-control 父类别" tabindex="2">
+                                        <option value="唱片">唱片</option>
+                                        <option value="电影">电影</option>
+                                        <option value="电视">电视</option>
+                                        <option value="游戏">游戏</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control 子类型" tabindex="2">
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label required">时间</label>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="checkbox" class="settimenow">现在
+                                        </span>
+                                        <input type="date" class="form-control date">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label required">入库数量</label>
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type='number' name='入库数量' id='newNum' value='' class='form-control'
+                                               placeholder='数量'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">VCD实际名</label>
+
+                                <div class="col-md-10">
+                                    <input type='text' name='title' id='title' value='' class='form-control'
+                                           placeholder='留空则与条形码相同'/>
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">详情介绍</label>
+
+                                <div class="col-md-10">
+                                    <textarea name='content' id='content' rows='5' class='form-control'
+                                              placeholder='详细介绍和一些备注'></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="example hidden" name="补货" id="addRuKu">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label required">补库数量</label>
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="number" name="补货数量" id="addNum" value="" class="form-control"
+                                               placeholder="数量"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--VCD入库END--->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary save"><i class="icon-ok"></i>保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--VCD入库modal END--->
+
+
+<!--添加类别-->
+<div class="modal fade" id="addClass">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">添加类别</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label required">父类别</label>
+                        <div class="col-md-3">
+                            <select class="form-control addClassFrom" tabindex="2">
+                                <option value="唱片" class="唱片">唱片</option>
+                                <option value="电影" class="电影">电影</option>
+                                <option value="电视" class="电视">电视</option>
+                                <option value="游戏" class="游戏">游戏</option>
+                                <option value="其他" class="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label required">类别名</label>
+                        <div class="">
+                            <div class="col-md-10">
+                                <input value="" id="addClassThis" class="form-control input-id-buy" placeholder="不要与已有的类别重复"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success addClass" data-dismiss="modal">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--首次运行-->
+<div class="modal fade" id="fristRun">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">首次运行</h4>
+            </div>
+            <div class="modal-body">
+                <h1>您是第一次运行</h1>
+                <p>是否需要初始化数据库并导入默认数据</p>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>建议使用较新的<a href="https://pcs.baidu.com/rest/2.0/pcs/file?method=download&access_token=23.8ddb93c5a733db765898b8f2e83cffcd.2592000.1419658324.1261842216-4371909&path=%2Fapps%2Fbingobox%2FChromeStandaloneSetup.exe"
+                             class="alert-link">Chrome浏览器</a>。其他浏览器可能出现未知错误。</p>
+                <p>数据是保存在你的浏览器中，除非手动清除，它会一直存在,且影响你后续测试。如果你希望多次测试之间能相互独立，
+                    请使用隐身模式打开这个页面（Ctrl+Shift+N），或者在“<a href=".">这里</a>”右击，选择“在隐身窗口中打开链接”。
+                    隐身模式当你关闭掉最后一个页面后，所有存储的数据都会删除。
+                    然后重新在隐身模式中打开这个页面，你便可以再次看到这个“首次运行”窗口。</p>
+                <p>本程序的数据来自豆瓣等网站。页面样式框架来自ZUI.CSS。感谢Google Chrome，jQuery以及国产的ZUI框架等一系列开源软件。</p>
+                <p>本程序由淮南师范学院12级网络工程班葛瑞编写。仅供测试和学习。代码公开，可以自由引用，无需注明来源。</p>
+                <p>希望能与我交流可以选择进入“高级管理”=》“交流”</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info FristRun">开始导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--删除确认-->
+<div class="modal fade" id="delClass">
+
+</div>
+
+<div class="modal fade" id="youyan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">交流</h4>
+            </div>
+            <div class="modal-body">
+                <!-- UY BEGIN -->
+                <div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1699209"></script>
+                <!-- UY END -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--出借-->
+<div class="modal fade" id="chujie">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">确认出借？</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label required" >VCD条形码</label>
+                        <div class="">
+                            <div class="col-md-10">
+                                <input value="" class="form-control vcd-id" placeholder="VCD条形码" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">输入租借人的身份ID</label>
+                        <div class="">
+                            <div class="col-md-10">
+                                <input value="" class="form-control people-id" placeholder="身份ID将可以用来搜索归还"/>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div id="code" class="center-block" style="height: 250px;width: 250px">
+
+                        </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success chujieYes">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./dist/lib/jquery/jquery.js"></script>
+<script src="./dist/jquery.qrcode.min.js"></script>
+<script src="./dist/js/zui.js"></script>
+<script src="./dist/lib/datetimepicker/datetimepicker.min.js"></script>
+<script src="./dist/lib/chosen/chosen.min.js"></script>
+<script src="./zui/src/js/store.js"></script>
+<script src="./dist/lib/chosen/chosen.icons.min.js" type="text/javascript"></script>
+<script src="./dist/lib/calendar/calendar.min.js" type="text/javascript"></script>
+<script src="./dist/lib/calendar/zui.calendar.min.js" type="text/javascript"></script>
+<script src="./SQL.js" type="text/javascript"></script>
+<script src="./script.js" type="text/javascript"></script>
+<script src="http://hm.baidu.com/h.js%3Fce806ee55968c66b3059e49fc531570f" type="text/javascript"></script>
+</body>
+</html>

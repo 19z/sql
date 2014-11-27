@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello SQL!</title>
+    <link href="./dist/css/zui.min.css" rel="stylesheet">
+    <!-- zui -->
+    <style>
+        #S > tr > td > p.hissql, #S > tr > td.hissql {
+            cursor: pointer;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s; /* Firefox 4 */
+            -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+            -o-transition: all 0.5s;
+        }
+
+        #S > tr > td > p.hissql:hover, #S > tr > td.hissql:hover {
+            background-color: #dad;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<header>
+
+</header>
+<div id="main">
+    <h1>Web SQL admin</h1>
+
+    <p>Web SQL是HTML5中新增的接口，本程序可以用来管理webSQL，适合SQL新手用来学习和测试SQL脚本。</p>
+
+    <p>数据完全保存在你的本地计算机中，无需网络连接也可正常使用。</p>
+
+    <div class="alert alert-success with-icon" id="success">
+        <i class="icon-ok-sign"></i>
+
+        <div class="content"><strong>太好了!</strong> 你的浏览器支持webSQL接口，<a href="#" class="alert-link" id="go">创建/重置Student,Course,SC三个表并写入测试数据</a>。
+        </div>
+    </div>
+    <div class="alert alert-warning with-icon" id="error">
+        <i class="icon-frown"></i>
+
+        <div class="content"><strong>不好了!</strong> 你的浏览器不支持webSQL接口，建议更换为
+            <a href="https://pcs.baidu.com/rest/2.0/pcs/file?method=download&access_token=23.4532416d534bf1fa5c8d5c0144559f8e.2592000.1416841527.1261842216-4371909&path=%2Fapps%2Fbingobox%2F%2FChromeStandaloneSetup.exe"
+               class="alert-link">Chrome浏览器</a>
+        </div>
+    </div>
+    <div>
+        <h2>在下方运行SQL</h2>
+        <hr/>
+        <div class="example">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" placeholder="数据库名" id="from" value="1208020210"
+                                   disabled>
+                        </div>
+                        <div class="btn-group">
+                            <input type="button" class="btn btn-danger" value="在此数据库中运行SQL" id="runsql">
+                            <input type="button" class="btn btn-default sqlbutton" value="创建表" name=""
+                                   title="create table if not exists stu (id REAL UNIQUE, name TEXT)">
+
+                            <div class="btn-group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    更多
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop1">
+                                    <li><a href="javascript:;" class="sqlbutton" title="select * from stu">显示表数据</a>
+                                    </li>
+                                    <li><a href="javascript:;" class="sqlbutton"
+                                           title="insert into stu (id, name) values(1, 'lilei')">插入数据</a></li>
+                                    <li><a href="javascript:;" class="sqlbutton"
+                                           title="update stu set name = '韩梅梅' where id= 1">修改数据</a></li>
+                                    <li><a href="javascript:;" class="sqlbutton" title="delete from  stu where id= 1">删除行</a>
+                                    </li>
+                                    <!--<li><a href="javascript:;">查看表结构</a></li>-->
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:;" class="sqlbutton"
+                                           title="select avg(Grade) FROM SC WHERE Cno='1'">带函数的查询案例</a></li>
+                                    <li><a href="javascript:;" class="sqlbutton" title="SELECT Sno,Sname,Sdept
+FROM Student S1
+WHERE EXISTS
+  (SELECT *
+   FROM Student S2
+   WHERE S2.Sdept=S1.Sdept AND
+     S2.Sname='刘晨')">子查询案例</a></li>
+                                    <li><a href="javascript:;" class="sqlbutton"
+                                           title="create view cs_student as select Sno,Sname,Sage from Student Where Sdept='CS';
+select * from cs_student">视图案例</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:;" class="sqlbutton" title="drop  table  stu">删除表</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p>《音响店VCD销售、出售管理系统》默认导入的表为：DVD,借还,入库历史,出售历史,类型，视图有：类型总览,借出总览。你可以在这里直接调试这些数据表。也可以直接查看<a href="javascript:;" class="sqlfile">初始化时导入的SQL文件</a></p>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <textarea rows="7" class="form-control" placeholder="输入SQL，以分号结束。遇到分号则自动运行"
+                                      id="sqlbox"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="panel-body">
+                    <table class="table">
+                    </table>
+                    <h3>历史记录
+                        <button class="btn btn-link pull-right clshist">
+                            清空历史记录
+                            <span class="label label-badge label-info" id="histnum" data-id='0'>0条</span>
+                        </button>
+                    </h3>
+                    <hr/>
+                    <table class="table">
+                        <tbody id="S">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">Copyleft，前端框架来自<a href="http://www.oschina.net/p/zui" target="_blank">ZUI</a>
+                    <textarea id="SQLlist" style="display:none">
+                        drop table Student;drop table Course;drop table SC;CREATE TABLE Student
+                        (Sno ChAR(9) PRIMARY KEY,
+                        Sname CHAR(9) UNIQUE,
+                        Ssex CHAR(2),
+                        Sage SMALLINT,
+                        Sdept CHAR(20)
+                        );CREATE TABLE Course
+                        (Cno CHAR(4) PRIMARY KEY,
+                        Cname CHAR(40),
+                        Cpno CHAR(4),
+                        Ccredit SMALLINT,
+                        FOREIGN KEY (Cpno) REFERENCES Course(Cno)
+                        );CREATE TABLE SC
+                        (Sno CHAR(9),
+                        Cno CHAR(4),
+                        Grade SMALLINT,
+                        PRIMARY KEY(Sno,Cno),
+                        FOREIGN KEY (Sno) REFERENCES Student(Sno),
+                        FOREIGN KEY (Cno) REFERENCES Course(Cno)
+                        );insert into Student(Sno,Sname,Ssex,Sage,Sdept) values(200215121,'李勇','男',20,'CS');insert into
+                        Student(Sno,Sname,Ssex,Sage,Sdept) values(200215122,'刘晨','男',19,'CS');insert into
+                        Student(Sno,Sname,Ssex,Sage,Sdept) values(200215123,'王敏','女',18,'MA');insert into
+                        Student(Sno,Sname,Ssex,Sage,Sdept) values(200215125,'张立','男',19,'IS');insert into
+                        Course(Cno,Cname,Cpno,Ccredit) values(1,'数据库',5,4);insert into Course(Cno,Cname,Cpno,Ccredit)
+                        values(2,'数学',NULL ,4);
+                        insert into Course(Cno,Cname,Cpno,Ccredit) values(3,'信息系统',1,4);insert into
+                        Course(Cno,Cname,Cpno,Ccredit) values(4,'操作系统',6,4);insert into Course(Cno,Cname,Cpno,Ccredit)
+                        values(5,'数据结构',7,4);insert into Course(Cno,Cname,Cpno,Ccredit) values(6,'数据处理',NULL ,4);insert
+                        into Course(Cno,Cname,Cpno,Ccredit) values(7,'PASCAL 语言',6,4);insert into SC(Sno,Cno,Grade)
+                        values('200215121','1',92);insert into SC(Sno,Cno,Grade) values('200215121','2',85);insert into
+                        SC(Sno,Cno,Grade) values('200215121','3',88);insert into SC(Sno,Cno,Grade)
+                        values('200215122','2',90);insert into SC(Sno,Cno,Grade) values('200215122','3',80);select *
+                        from Student;select * from Course;select * from SC;</textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+<script src="./dist/lib/jquery/jquery.js"></script>
+<!-- ZUI Javascript组件 -->
+<script src="./dist/js/zui.min.js"></script>
+<script src="./webSQL.js"></script>
+<span style="display:none"><script src="http://s95.cnzz.com/z_stat.php?id=1253173691&web_id=1253173691"
+                                   language="JavaScript"></script></span>
+</body>
+</html>

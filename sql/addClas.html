@@ -1,0 +1,40 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+        <h4 class="modal-title">添加类型</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-md-2 control-label required">名称/条形码</label>
+
+            <div class="col-md-7">
+                <div class="input-group">
+                    <input type='text' class='form-control isbn' placeholder='9787880455472'/>
+                    <span class="input-group-btn"><button class="btn btn-default" type="button">搜索</button></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">类型</label>
+
+            <div class="col-md-3">
+                <select class="form-control addClassFrom" tabindex="2" value="唱片">
+                    <option value=""></option>
+                    <option value="唱片" class="唱片">唱片</option>
+                    <option value="电影" class="电影">电影</option>
+                    <option value="电视" class="电视">电视剧</option>
+                    <option value="游戏" class="游戏">游戏</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">类型名</label>
+
+            <div class="col-md-10">
+                <input type="text" class="form-control AddClassName" placeholder="不要和已有类型名重复" />
+            </div>
+        </div>
+    </div>
+</div>

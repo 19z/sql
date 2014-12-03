@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS 借还 (
 CREATE VIEW 借出总览 as
     select 借还.借还,借还.借阅者,借还.条形码,借还.借出时间,DVD.父类型,DVD.具体名
     from 借还,DVD
-    where 借还.条形码=DVD.条形码;
+    where 借还.条形码=DVD.条形码 and 借还.归还时间=0;
 
 CREATE VIEW 类型总览 as
     SELECT 类型名, 父类型, COUNT(类型名),SUM(库存),SUM(出租在外),SUM(已出售),SUM(总共借出次数)

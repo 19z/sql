@@ -8,7 +8,6 @@
     <meta name="author" content="Zentao">
     <meta name="renderer" content="webkit">
     <title>HELLO SQL</title>
-
     <link href="./dist/css/zui.min.css" rel="stylesheet">
     <link href="./dist/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
     <link href="./dist/lib/chosen/chosen.min.css" rel="stylesheet">
@@ -16,22 +15,18 @@
     <link href="./dist/lib/calendar/zui.calendar.min.css" rel="stylesheet">
     <link href="./dist/lib/chosen/chosen.icons.min.css" rel="stylesheet">
     <link href="./dist/doc.css" rel="stylesheet">
-
     <!--[if lt IE 9]>
-    <script src="./assets/html5shiv.js"></script>
-    <script src="./assets/respond.js"></script>
+    <script>alert("你的浏览器不支持")</script>
     <![endif]-->
 </head>
 <body>
 <header>
-
 </header>
 <div id="main">
     <h1>音响店VCD销售、出售管理系统
         <small>计信系网络工程专业-葛瑞</small>
     </h1>
     <div class="center-block"><em>HELLO SQL</em></div>
-
     <ul id="myTab" class="nav nav-pills">
         <li class="active">
             <a href="#总览" data-toggle="tab">总览</a>
@@ -51,7 +46,6 @@
         <li>
             <a href="#VCD零售管理" data-toggle="tab">VCD零售管理</a>
         </li>
-
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 高级管理<b class="caret"></b>
@@ -75,7 +69,6 @@
     <!---总览-->
     <div class="tab-pane in active" id="总览">
         <h3>快捷操作</h3>
-
         <div class="btn-group">
             <button type="button" class="btn btn-default quityRuKu" data-toggle="modal" data-target="#VCDRuKu"><i
                     class="icon-download-alt"></i>VCD入库
@@ -105,14 +98,9 @@
             </tbody>
         </table>
         <hr/>
-
-
     </div>
-
-
     <!---全部VCD-->
     <div class="tab-pane" id="全部VCD">
-
         <div class="comments">
             <header>
                 <div class="">
@@ -126,20 +114,15 @@
                             </span>
                         </div>
                     </div>
-
                 </div>
                 <h3><i class="icon-bullseye icon-border-circle"></i>全部DVD</h3>
             </header>
             <section class="comments-list allDVD">
-
             </section>
             <footer>
-
             </footer>
         </div>
-
     </div>
-
     <!--VCD类型管理--->
     <div class="tab-pane" id="VCD类型管理">
         <h2>VCD类型管理</h2>
@@ -150,26 +133,21 @@
                 <td>默认</td>
                 <td>不可删除</td>
             </tr>
-
             <tr class="电影类型">
                 <td rowspan="1">电影</td>
                 <td>默认</td>
                 <td>不可删除</td>
             </tr>
-
-
             <tr class="电视类型">
                 <td rowspan="1">电视</td>
                 <td>默认</td>
                 <td>不可删除</td>
             </tr>
-
             <tr class="游戏类型">
                 <td rowspan="1">游戏</td>
                 <td>默认</td>
                 <td>不可删除</td>
             </tr>
-
             <tr class="其他类型">
                 <td rowspan="1">其他</td>
                 <td>默认</td>
@@ -177,9 +155,7 @@
             </tr>
             </tbody>
         </table>
-
     </div>
-
     <!---VCD入库管理-->
     <div class="tab-pane" id="VCD入库管理">
         <h3>VCD入库</h3>
@@ -202,11 +178,9 @@
                 <td>入库VCD的条形码</td>
                 <td>入库数量</td>
             </tr>
-
             </tbody>
         </table>
     </div>
-
     <!---VCD借还管理-->
     <div class="tab-pane" id="VCD借还管理">
         <h2><i class="icon-upload"></i>VCD借出</h2>
@@ -219,17 +193,14 @@
                     </div>
                 </div>
             </div>
-
         </form>
         <hr />
         <table class="table table-bordered sousuoming">
         </table>
-
         <h2><i class="icon-download"></i>VCD归还</h2>
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-lg-2 control-label">出借码或者借阅者的ID</label>
-
                 <div class="">
                     <div class="col-md-10">
                         <input value="" class="form-control input-id-jie"
@@ -239,10 +210,8 @@
             </div>
         </form>
         <div id="jie">
-
         </div>
     </div>
-
     <!----VCD零售管理--->
     <div class="tab-pane" id="VCD零售管理">
         <h2>VCD零售管理</h2>
@@ -250,7 +219,6 @@
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-lg-2 control-label required">名称/条形码</label>
-
                 <div>
                     <div class="col-md-10">
                         <input value="" class="form-control input-id-shou" placeholder="如果有条形码请一律输入条形码">
@@ -259,7 +227,6 @@
             </div>
             <div class="form-group">
                 <label class="col-lg-2 control-label required">数量</label>
-
                 <div>
                     <div class="col-md-3">
                         <input value="" class="form-control input-id-num" placeholder="数量">
@@ -270,25 +237,15 @@
                 </div>
             </div>
         </form>
-
-
     </div>
-
-
     <!----关于--->
     <div class="tab-pane" id="关于">
         <h2>关于</h2>
-
-
     </div>
-
-
+	<p>本程序纯粹是为了完成学校任务，核心文件。</p><a href="./SQL.js">SQL.js</a> 和<a href="./script.js">script.js</a> 
     <!--细节结束-->
     </div>
-
-
 </div>
-
 <!--VCD入库modal Start--->
 <div class="modal fade" id="VCDRuKu">
     <div class="modal-dialog">
@@ -301,10 +258,8 @@
             <div class="modal-body">
                 <!--VCD入库Start--->
                 <form class="form-horizontal" role="form">
-
                     <div class="form-group">
                         <label class="col-md-4 control-label required">VCD的ID/唯一名/条形码</label>
-
                         <div class="col-md-7">
                             <div class="col-md-12">
                                 <input type='text' name='isbn' id='isbn' value='' class='form-control input_isbn'
@@ -313,12 +268,10 @@
                         </div>
                     </div>
                     <hr/>
-
                     <div class="tab-content">
                         <div class="example" name="新增" id="newRuKu">
                             <div class="form-group">
                                 <label class="col-md-2 control-label required">类型</label>
-
                                 <div class="col-md-3">
                                     <select class="form-control 父类别" tabindex="2">
                                         <option value="唱片">唱片</option>
@@ -333,11 +286,8 @@
                                     </select>
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label required">时间</label>
-
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
@@ -347,11 +297,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label required">入库数量</label>
-
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <input type='number' name='入库数量' id='newNum' value='' class='form-control'
@@ -359,33 +306,24 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label">VCD实际名</label>
-
                                 <div class="col-md-10">
                                     <input type='text' name='title' id='title' value='' class='form-control'
                                            placeholder='留空则与条形码相同'/>
-
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label">详情介绍</label>
-
                                 <div class="col-md-10">
                                     <textarea name='content' id='content' rows='5' class='form-control'
                                               placeholder='详细介绍和一些备注'></textarea>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="example hidden" name="补货" id="addRuKu">
                             <div class="form-group">
                                 <label class="col-lg-2 control-label required">补库数量</label>
-
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <input type="number" name="补货数量" id="addNum" value="" class="form-control"
@@ -406,8 +344,6 @@
     </div>
 </div>
 <!--VCD入库modal END--->
-
-
 <!--添加类别-->
 <div class="modal fade" id="addClass">
     <div class="modal-dialog">
@@ -448,9 +384,6 @@
         </div>
     </div>
 </div>
-
-
-
 <!--首次运行-->
 <div class="modal fade" id="fristRun">
     <div class="modal-dialog">
@@ -482,12 +415,9 @@
         </div>
     </div>
 </div>
-
 <!--删除确认-->
 <div class="modal fade" id="delClass">
-
 </div>
-
 <div class="modal fade" id="youyan">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -505,9 +435,7 @@
             </div>
         </div>
     </div>
-
 </div>
-
 <!--出借-->
 <div class="modal fade" id="chujie">
     <div class="modal-dialog">
@@ -533,9 +461,7 @@
                             </div>
                         </div>
                     </div>
-
                         <div id="code" class="center-block" style="height: 250px;width: 250px">
-
                         </div>
                 </form>
             </div>

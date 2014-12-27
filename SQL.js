@@ -51,7 +51,13 @@ SQL = function(){
             $this.runSQL(sql_list[i],[],$runt);
 
         };
-
+        //手动创建触发器
+        $this.runSQL("CREATE TRIGGER 修改\
+        AFTER UPDATE ON DVD\
+        FOR EACH ROW\
+        BEGIN\
+        INSERT into 修改历史 values ( new.条形码,old.库存 , new.库存-old.库存 ,time());\
+        END;",[],'创建触发器');
 
     }
     window.runSQLList=$this.runSQLList;

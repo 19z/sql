@@ -43,6 +43,13 @@ CREATE TABLE IF NOT EXISTS 借还 (
     FOREIGN KEY (条形码) REFERENCES DVD(条形码)
 
  );
+ CREATE TABLE IF NOT EXISTS 修改 (
+    条形码 char(40) PRIMARY KEY,
+    库存 int(7),
+    变动 int(7),
+    时间 TIMESTAMP,
+    FOREIGN KEY (条形码) REFERENCES DVD(条形码)
+ );
 
 
 ---------视图----------
@@ -55,6 +62,16 @@ CREATE VIEW 类型总览 as
     SELECT 类型名, 父类型, COUNT(类型名),SUM(库存),SUM(出租在外),SUM(已出售),SUM(总共借出次数)
     FROM DVD
     GROUP BY 类型名,父类型;
+
+
+-------------创建触发器--------------
+------------这里的代码会因为SQL切割的问题运行失败，在sql.js文件中，触发器需要手动重新运行一下---------------
+CREATE TRIGGER 修改
+ AFTER UPDATE ON DVD
+ FOR EACH ROW
+ BEGIN
+ INSERT into 修改历史 values ( new.条形码,old.库存 , new.库存-old.库存 ,time());
+ END;
 
 -------------插入分类数据--------------------
 INSERT INTO `类型` (`类型名`, `父类型`) VALUES('历史', '电视');
